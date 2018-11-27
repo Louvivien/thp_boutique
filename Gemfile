@@ -8,6 +8,9 @@ ruby '2.5.1'
 gem 'stripe'
 
 
+
+gem 'mini_racer'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
