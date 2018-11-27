@@ -7,9 +7,10 @@
 
     <body>
 		<h1>Photo de chat(MVP)</h1>
-		<%= @item.each do |item1| %>	
-			<%= link_to "Show", profile_path(@item1) do %>
-				    <img src="<%= @item1.image_url %>">
+		<% @item.each do |item1| %>
+			<%= link_to index_path(item1) do %>
+				<img src="<%= item1.image_url %>">
+			<% end %>
 		<% end %>
     </body>
 </html>
