@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :panier
+  
    validates :title,
    presence: true,
    length: {maximum: 100},

@@ -1,3 +1,3 @@
 class Panier < ApplicationRecord
-	has_many :paniers
+	has_many :items
 end
