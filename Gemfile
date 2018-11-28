@@ -7,7 +7,7 @@ ruby '2.5.1'
 
 gem 'stripe'
 
-
+gem 'devise'
 
 gem 'mini_racer'
 
