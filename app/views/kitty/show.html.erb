@@ -12,5 +12,9 @@
 	    <%=  @item.description %>
 	    </br>
 	    <%= @item.price %> $
+
+	   <% if current_user %>
+		   <button type="button">Click Me!</button>
+		<% end %>
     </body>
 </html>
