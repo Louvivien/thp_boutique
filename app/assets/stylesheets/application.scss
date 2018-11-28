@@ -10,9 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require bootstrap/css/bootstrap.min
+
+*= require bootstrap/css/bootstrap.min
 *= require assets/util
 *= require assets/main
 *= require animate/animate
@@ -21,4 +20,8 @@
 *= require daterangepicker/daterangepicker
 *= require slick/slick
 *= require lightbox2/css/lightbox.min
+*= require_tree .
+*= require_self
  */
+
+@import "bootstrap";
