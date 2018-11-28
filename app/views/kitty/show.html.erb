@@ -14,7 +14,7 @@
 	    <%= @item.price %> $
 
 	   <% if current_user %>
-		   <button type="button">Click Me!</button>
+	   	<%= button_to "Ajouter au panier", { action: "new" }, form_class: "new-thing" %>
 		<% end %>
     </body>
 </html>

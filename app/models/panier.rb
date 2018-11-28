@@ -1,3 +1,4 @@
 class Panier < ApplicationRecord
-	has_many :paniers
+	has_many :items
+	belongs_to :user
 end
