@@ -45,12 +45,12 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Accueil</a>
+								<a href="/">Accueil</a>
 						
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="index">Shop</a>
 							</li>
 
 							<li>
@@ -708,21 +708,3 @@ Le site le plus mignon du monde !						</span>
 			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 		</span>
 	</div>
-=======
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>E-boutique(MVP)</title>
-    </head>
-
-    <body>
-		<h1>Photo de chat(MVP)</h1>
-		<% @item2.each do |item1| %>
-			<%= link_to kitty_path(item1) do %>
-				<img src="<%= item1.image_url %>">
-			<% end %>
-		<% end %>
-    </body>
-</html>
->>>>>>> development:app/views/kitty/index.html.erb
