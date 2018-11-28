@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap/css/bootstrap.min
+*= require assets/util
+*= require assets/main
+*= require animate/animate
+*= require css-hamburgers/hamburgers.min
+*= require select2/select2.min
+*= require daterangepicker/daterangepicker
+*= require slick/slick
+*= require lightbox2/css/lightbox.min
  */
