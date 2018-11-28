@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+
+#panier
+
    validates :title,
    presence: true,
    length: {maximum: 100},
