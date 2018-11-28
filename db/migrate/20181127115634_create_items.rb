@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.decimal :price
       t.string :image_url
+      t.belongs_to :panier, index: true
       t.timestamps
     end
   end

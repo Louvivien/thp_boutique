@@ -8,6 +8,10 @@ ruby '2.5.1'
 gem 'stripe'
 
 
+gem 'mailjet', '~> 1.5', '>= 1.5.4'
+
+gem 'devise'
+
 
 gem 'mini_racer'
 
