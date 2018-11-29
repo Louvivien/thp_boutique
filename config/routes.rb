@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   get '/index', to: 'kitty#new'
   get '/panier', to:'kitty#panier'
   delete '/panier', to: 'kitty#items'
-  devise_for :users
+
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
+
   resources :charges
   root 'kitty#index'
   post '/kitty/new' , to: 'kitty#create'
   resources :kitty
+
 
 end
