@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   post '/index', to: 'kitty#create'
+  get '/about', to: 'kitty#about'
+  get '/contact', to: 'kitt#contact'
   get '/index', to: 'kitty#new'
   get '/panier', to:'kitty#panier'
   post '/panier', to: 'kitty#order'
