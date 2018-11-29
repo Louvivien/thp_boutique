@@ -5,17 +5,101 @@
         <title>E-boutique(MVP)</title>
     </head>
 
+
+
+<%=render "shared/navbar" %>
+
+
+
+	
+
+					<!-- Product -->
+					<div class="row">
+						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+															<%= image_tag "slider1.jpg" %>
+
+
+									<div class="block2-overlay trans-0-4">
+										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+										</a>
+
+										<div class="block2-btn-addcart w-size1 trans-0-4">
+											<!-- Button -->
+											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+												Add to Cart
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="block2-txt p-t-20">
+									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										Herschel supply co 25l
+									</a>
+
+									<span class="block2-price m-text6 p-r-5">
+										$75.00
+									</span>
+								</div>
+							</div>
+						</div>
+
+					
+		</div>
+	</section>
+
     <body>
 		<h1>Photo de chat(MVP)</h1>
 		<% @item2.each do |item1| %>
-		  <div class="card">
-		  	<%= item1.title %>
-		  	<div class="img_card">
-			  <%= link_to kitty_path(item1) do %>
-			  	<img src="<%= item1.image_url %>" width="100%">
-			  <% end %>
-		    </div>
-		  </div>
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+						<div class="block2">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+			                    <%= link_to kitty_path(item1) do %>
+			  	                <img src="<%= item1.image_url %>">
+			                    <% end %>
+			                    <div class="block2-overlay trans-0-4">
+										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+										</a>
+
+										<div class="block2-btn-addcart w-size1 trans-0-4">
+											<!-- Button -->
+											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+												Add to Cart
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="block2-txt p-t-20">
+									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										<%= item1.title %>
+									</a>
+
+									<span class="block2-price m-text6 p-r-5">
+										<%= item1.price %>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
 		<% end %>
     </body>
+
+
+
+<%=render "shared/footer" %>
+
+
+
+
+
 </html>
+
