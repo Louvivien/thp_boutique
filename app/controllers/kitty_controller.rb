@@ -30,7 +30,7 @@ class KittyController < ApplicationController
     if (current_user == nil)
       flash[:notice] = "Connectez-vous pour voir votre panier"
     else
-	  if (current_user.panier = nil)
+	  if (current_user.panier == nil)
 	    flash[:notice] = "votre panier est vide"
 	  else current_user.panier.items.each do |items|
           prix = items.price.to_f

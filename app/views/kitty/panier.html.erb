@@ -12,7 +12,6 @@
 	      <p>Connectez-vous pour voir votre panier</p>
 	      <%= link_to 'home', root_path %>
 	    <% else %>
-
 	      <% if (current_user.panier.items == nil)%>
 	        <p>Votre panier est vide, venez visitez notre shop</p>
 	        <%= link_to 'magasin', path_index %>
@@ -26,6 +25,7 @@
 		      <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
      	    <%end%>
      	      <h3> Le prix total des items: <%= @price %>$</h3>
+     	      <%= link_to 'retour au magasin', index_path %>
 	      <%end%>
 	    <%end%>
 
