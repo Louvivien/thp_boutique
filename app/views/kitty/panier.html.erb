@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Titre</title>
+    </head>
+
+    <body>
+	    <h1>Voici votre panier</h1>
+	    </br>
+	    <% current_user.panier.items.each do |items| %>
+		    <img src="<%= items.image_url %>">
+		    </br>
+		    <%= items.title %>
+		    </br>
+		    <%= items.price %>$
+		    </br>
+		    <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+	    <%end%>
+	    <h3> Le prix total des items: <%= @price %>$</h3>
+    </body>
+</html>
