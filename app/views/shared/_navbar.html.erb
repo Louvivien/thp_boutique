@@ -30,8 +30,7 @@
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-
-<%= image_tag "icons/logochat2.png" %>
+                  <%= image_tag "icons/logo-miaou.png", width: "170%" %>
 				</a>
 
 
@@ -41,12 +40,12 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Accueil</a>
+								<a href="/">Accueil</a>
 						
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="/index">Shop</a>
 							</li>
 
 							<li>
@@ -67,12 +66,38 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
-					<a href="#" class="header-wrapicon1 dis-block">
+                      <div class="mon_dropdown">
+                        <img class="avatar rounded-circle" height="58%" width="58%" src="https://img.icons8.com/ios/50/000000/user.png">
+                        <ul class="dropdown-contenu">
+                          <% unless user_signed_in? %>
+                          <li class="modale-link-login">
+                            <a href="/users/sign_in">Log in</a>
+                          </li>
+                          <li class="modale-link-signup">
+                            <a href="/users/sign_up">Sign up</a>
+                          </li>
+                          <% else %>
+                          <li>
+                            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                          </li>
+                          <% end %>
+                        </ul>
+                      </div>
+					<script>
+                	//DROP-DOWN MENU
+                    //En cas de clic n'importe où sur le document, j'efface mon dropdown menu et mes modales
+                      $(document).click(function(){
+                        $(".dropdown-contenu").fadeOut(300);
+                        $(".modale").fadeOut(300);
+                        $("body").removeClass('modalIsOn');
+                      });
 
-<%= image_tag "icons/icon-header-01.png" %>
-
-						
-					</a>
+ //En cas de clic, je rajoute/enlève la classe show à mon dropdown
+ $(".avatar").click(function(e){
+   e.stopPropagation(); //pour ne pas être affecté par la fonction "clic n'importe où sur le document"
+   $(".dropdown-contenu").fadeToggle(300);
+ });
+</script>
 
 					<span class="linedivide1"></span>
 
