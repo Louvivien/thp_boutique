@@ -4,6 +4,10 @@
         <meta charset="utf-8" />
     </head>
 	
+
+
+
+
     <body>
 	    <img src="<%= @item.image_url %>">
 	    </br>
@@ -13,8 +17,18 @@
 	    </br>
 	    <%= @item.price %> $
 
-	   <% if current_user %>
-	   	<%= button_to "Ajouter au panier", { action: "new" }, form_class: "new-thing" %>
-		<% end %>
+	    <% if current_user %>
+		    <%= form_tag kitty_path do %>
+		    <div>
+			    <%= text_field_tag :number %>
+		    </div>
+		    <%= button_to "Ajouter au panier", { action: "new" }, form_class: "new-thing" %>
+	    <% end %>
+    <% end %>
+
     </body>
 </html>
+
+
+
+
