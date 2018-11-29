@@ -13,9 +13,6 @@
 
 
 
-
-
-
 	    <h1>Voici votre panier</h1>
 	    </br>
 	    <% if (current_user == nil)%>
@@ -25,20 +22,35 @@
 		    <% if (current_user.panier.items == nil)%>
 			    <p>Votre panier est vide, venez visitez notre shop</p>
 			    <%= link_to 'magasin', path_index %>
-		    <% else current_user.panier.items.each do |items| %>
-			    <img src="<%= items.image_url %>">
-			    </br>
-			    <%= items.title %>
-			    </br>
-			    <%= items.price %>$
-			    </br>
-			    <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
-		    <%end%>
-		    <h3> Le prix total des items: <%= @price %>$</h3>
-		    <%= link_to 'retour au magasin', index_path %>
+      <div class="ensemble-page">
+		<div class= "row">
+		  <% else current_user.panier.items.each do |items| %>
+		  <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="container-img">
+  	    		  	<img src= "<%= items.image_url %>" class="image" width="100%">
+     			</div>
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <%= items.title %>
+                    </h4>
+                    <%= items.price %>€
+                    <p class="card-text"><%= items.description %></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  </div>
+                  <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+                </div>
+              </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      	    <h3> Le prix total des items: <%= @price %>$</h3>
+<%= link_to 'retour au magasin', index_path %>
 		    <%= button_to "passer commande", { action: "order" }, form_class: "new-thing" %>
 	    <%end%>
-    <% end %>
 
 <%=render "shared/footer" %>
     </body>
