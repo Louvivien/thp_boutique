@@ -40,14 +40,14 @@ class KittyController < ApplicationController
   # end
 	
   def new
-  	  @panier = Panier.find(current_user.id)
-	  @array = Array.new
-	  Item.all.each do |item|
-		  if (duplicate(item) == false)
-			  @array << item
-		  end
+  	@panier = Panier.find(current_user.id)
+    @array = Array.new
+	Item.all.each do |item|
+	  if (duplicate(item) == false)
+	    @array << item
 	  end
-	  @item2 = Item.all
+	end
+	@item2 = Item.all
   end
 
   def product
