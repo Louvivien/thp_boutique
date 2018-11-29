@@ -10,48 +10,42 @@
 
 <%=render "shared/navbar" %>
 
+<section class="bg-title-page p-t-90 p-b-165 flex-col-c-m" style="background-image: url(https://www.whosforcats.com.au/wp-content/uploads/2017/11/cropped-h1.jpg);"><div class="text-head"><h1>Votre panier</h1></div></section>
 
-
-
-	    <h1>Voici votre panier</h1>
-	    </br>
-	    <% if (current_user == nil)%>
-		    <p>Connectez-vous pour voir votre panier</p>
-		    <%= link_to 'home', root_path %>
-	    <% else %>
-		    <% if (current_user.panier.items == nil)%>
-			    <p>Votre panier est vide, venez visitez notre shop</p>
-			    <%= link_to 'magasin', path_index %>
-      <div class="ensemble-page">
-		<div class= "row">
-		  <% else current_user.panier.items.each do |items| %>
-		  <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                  <div class="container-img">
-  	    		  	<img src= "<%= items.image_url %>" class="image" width="100%">
-     			</div>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <%= items.title %>
-                    </h4>
-                    <%= items.price %>€
-                    <p class="card-text"><%= items.description %></p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                  </div>
+	  </br>
+	  <% if (current_user == nil)%>
+        <p>Connectez-vous pour voir votre panier</p>
+	    <%= link_to 'home', root_path %>
+	  <% else %>
+		<% if (current_user.panier.items == nil)%>
+	      <p>Votre panier est vide, venez visitez notre shop</p>
+		  <%= link_to 'magasin', path_index %>
+		<% else %>
+		  <div class="ensemble-page-1">
+		  <% current_user.panier.items.each do |items| %>
+		    <div class="row1">
+              <div class="card11 h-100">
+                <div class="container-img">
+  	    		  <img src= "<%= items.image_url %>" class="image" width="100%">
+       	        </div>
+                <div class="card-body">
+                  <h4 class="card-title"><%= items.title %></h4>
+                  <%= items.price %>€
+                  <p class="card-text"><%= items.description %></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                   <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
                 </div>
               </div>
+            </div>
           <% end %>
-          <% end %>
-        </div>
-      </div>
-      	    <h3> Le prix total des items: <%= @price %>$</h3>
-<%= link_to 'retour au magasin', index_path %>
-		    <%= button_to "passer commande", { action: "order" }, form_class: "new-thing" %>
-	    <%end%>
-
-<%=render "shared/footer" %>
+          </div>
+        <% end %>
+        <h3> Le prix total des items: <%= @price %>$</h3>
+        <%= link_to 'retour au magasin', index_path %>
+		<%= button_to "passer commande", { action: "order" }, form_class: "new-thing" %>
+	  <%end%>
+      <%=render "shared/footer" %>
     </body>
 </html>
