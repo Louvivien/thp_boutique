@@ -89,8 +89,10 @@ class KittyController < ApplicationController
 	  panier = current_user.panier.items
 	  panier.each do |item|
 		  order.items << item
-		  current_user.panier.items.delete(item.id)
 	  end
+	  current_user.panier.delete
 	  redirect_to '/'
   end
+
+  # UserMailer.welcome_email(current_user).deliver_now!
 end
