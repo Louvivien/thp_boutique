@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get '/panier', to:'kitty#panier'
   post '/panier', to: 'kitty#order'
   delete '/panier', to: 'kitty#items'
-  devise_for :users
+
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
+
   resources :charges
   root 'kitty#index'
   post '/kitty/:id', to: 'kitty#product'

@@ -1,0 +1,3 @@
+M	app/controllers/Users/registrations_controller.rb
+M	config/routes.rb
+M	db/schema.rb
