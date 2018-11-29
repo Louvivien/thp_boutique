@@ -28,7 +28,7 @@ class KittyController < ApplicationController
 	@@num = params[:id].to_i
 	@item = Item.find(params[:id].to_i)
 	if current_user
-      @current_user = User.find(current_user.id)
+		@current_user = User.find(current_user.id)
 	end
   end
 
@@ -62,20 +62,20 @@ class KittyController < ApplicationController
   end
 
   def panier
-	@price = 0
-    if (current_user == nil)
-      flash[:notice] = "Connectez-vous pour voir votre panier"
-    else
-	  if (current_user.panier == nil)
-	    flash[:notice] = "votre panier est vide"
-	  else current_user.panier.items.each do |items|
-		  items.price.sub!(",", ".")
-		  prix = items.price.to_f
-		  @price = @price + prix
-		  @price
-	    end
+	  @price = 0
+      	  if (current_user == nil)
+	    	  flash[:notice] = "Connectez-vous pour voir votre panier"
+      	  else
+		  if (current_user.panier == nil)
+	      		  flash[:notice] = "votre panier est vide"
+		  else current_user.panier.items.each do |items|
+			  items.price.sub!(",", ".")
+			  prix = items.price.to_f
+			  @price = @price + prix
+			  @price
+		  end
+		  end
 	  end
-	end
   end
   
   def items
@@ -90,9 +90,27 @@ class KittyController < ApplicationController
 	  panier.each do |item|
 		  order.items << item
 	  end
-	  current_user.panier.delete
-	  redirect_to '/'
+	  redirect_to '/conf'
   end
+
+   def conf
+	   @price_total = 0
+
+	   current_user.orders.last.items.each do |items|
+                  items.price.sub!(",", ".")
+                  prix = items.price.to_f
+                  @price_total = @price_total + prix
+	   end
+
+	   if current_user && current_user.panier == nil
+		   current_user.panier = Panier.new
+	   end
+   end
+
+   def backpanier
+	   redirect_to '/panier'
+   end
+
 
   # UserMailer.welcome_email(current_user).deliver_now!
 end
