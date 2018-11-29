@@ -1,5 +1,5 @@
 class KittyController < ApplicationController
-
+@@num = 0
   def index
     if current_user && current_user.panier == nil
 	    current_user.panier = Panier.new
@@ -8,6 +8,7 @@ class KittyController < ApplicationController
 	
 	def show
 	  @@num = params[:id].to_i
+    puts @@num
     @item = Item.find(params[:id].to_i)
     if current_user
       @current_user = User.find(current_user.id)
