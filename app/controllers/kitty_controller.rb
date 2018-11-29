@@ -40,7 +40,9 @@ class KittyController < ApplicationController
   # end
 	
   def new
-  	@panier = Panier.find(current_user.id)
+  	if (current_user != nil)
+  	  @panier = Panier.find(current_user.id)
+    end
     @array = Array.new
 	Item.all.each do |item|
 	  if (duplicate(item) == false)
