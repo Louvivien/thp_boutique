@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          :confirmable
   has_one :panier
+  has_many :orders
 end

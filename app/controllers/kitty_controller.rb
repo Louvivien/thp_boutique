@@ -32,9 +32,10 @@ class KittyController < ApplicationController
 	  if (current_user.panier == nil)
 	    flash[:notice] = "votre panier est vide"
 	  else current_user.panier.items.each do |items|
-          prix = items.price.to_f
-	      @price = @price + prix
-	      puts @price
+		  items.price.sub!(",", ".")
+		  prix = items.price.to_f
+		  @price = @price + prix
+		  @price
 	    end
 	  end
 	end

@@ -1,7 +1,4 @@
 class Item < ApplicationRecord
-
-
-
    validates :title,
    presence: true,
    length: {maximum: 100},
@@ -24,4 +21,5 @@ class Item < ApplicationRecord
    presence: true,
    on: :create,
    allow_nil: false
+		
 end
