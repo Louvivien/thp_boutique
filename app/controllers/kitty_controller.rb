@@ -17,7 +17,6 @@ class KittyController < ApplicationController
   def create
     @item = Item.find(@@num)
 	current_user.panier.items << @item
-	puts 'coucou'
 	redirect_to '/'
   end
 	
@@ -46,4 +45,6 @@ class KittyController < ApplicationController
 	current_user.panier.items.delete(params[:id].to_i)
 	redirect_to '/panier'
   end
+
+  # UserMailer.welcome_email(current_user).deliver_now!
 end

@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #POST /resource/
    def create
-     puts "a"
+      puts 'coucou de registration controller'
    end
 
   # GET /resource/edit
