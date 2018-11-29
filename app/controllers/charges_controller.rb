@@ -20,6 +20,7 @@ def create
   )
   
   destroy_shopping_cart
+  mail_order
 
 rescue Stripe::CardError => e
   flash[:error] = e.message
@@ -54,4 +55,10 @@ end
     return @amount
   end
 
+  def mail_order
+    @mail = User.find(current_user.id).email
+    puts @mail
+    puts @mail.inspect
+    UserMailer.client_order(@mail).deliver_now!
+  end
 end
