@@ -1,19 +1,28 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   #GET /resource/sign_up
    def new
-     puts "e"
+     super 
    end
 
   #POST /resource/
    def create
-      puts 'coucou de registration controller'
+    super
+    @user_mail = params[:email]
+    if (@user_mail != nil)
+    else
+      @current_user = User.find(current_user.id)
+      @user_mail = @current_user.email
+      send_welcome_mail(@user_mail)
+    end 
    end
-
+  
+  def send_welcome_mail(mail)
+    @mail = mail
+    UserMailer.welcome_email(@mail).deliver_now!
+  end
   # GET /resource/edit
   # def edit
   #   super
