@@ -78,22 +78,22 @@
 				<div class="header-icons">
                       <div class="mon_dropdown">
                         <img class="avatar rounded-circle" height="58%" width="58%" src="https://img.icons8.com/ios/50/000000/user.png">
-                        <ul class="dropdown-contenu">
-                          <% unless user_signed_in? %>
-                          <li class="modale-link-login">
-                            <a href="/users/sign_in">Log in</a>
-                          </li>
-                          <li class="modale-link-signup">
-                            <a href="/users/sign_up">Sign up</a>
-                          </li>
-                          <% else %>
-                          <li>
-                            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-                          </li>
-                          <% end %>
-                        </ul>
-                      </div>
-					<script>
+			<ul class="dropdown-contenu">
+				<% if user_signed_in? %>
+					<li class="nav-item active">
+						<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+					</li>
+				<% else %>
+					<li class="nav-item active">
+						<a class="nav-link" data-toggle="modal" data-target="#signUpModal">Sign Up</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" data-target="#logInModal">Log In</a>
+					</li>
+				<% end %>
+			</ul>
+		      </div>
+		      <script>
                 	//DROP-DOWN MENU
                     //En cas de clic n'importe où sur le document, j'efface mon dropdown menu et mes modales
                       $(document).click(function(){
@@ -107,7 +107,7 @@
    e.stopPropagation(); //pour ne pas être affecté par la fonction "clic n'importe où sur le document"
    $(".dropdown-contenu").fadeToggle(300);
  });
-</script>
+		      </script>
 
 					<span class="linedivide1"></span>
 
