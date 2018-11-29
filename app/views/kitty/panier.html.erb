@@ -8,15 +8,26 @@
     <body>
 	    <h1>Voici votre panier</h1>
 	    </br>
-	    <% current_user.panier.items.each do |items| %>
-		    <img src="<%= items.image_url %>">
-		    </br>
-		    <%= items.title %>
-		    </br>
-		    <%= items.price %>$
-		    </br>
-		    <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+	    <% if (current_user == nil)%>
+	      <p>Connectez-vous pour voir votre panier</p>
+	      <%= link_to 'home', root_path %>
+	    <% else %>
+
+	      <% if (current_user.panier.items == nil)%>
+	        <p>Votre panier est vide, venez visitez notre shop</p>
+	        <%= link_to 'magasin', path_index %>
+	      <% else current_user.panier.items.each do |items| %>
+	          <img src="<%= items.image_url %>">
+		      </br>
+		      <%= items.title %>
+		      </br>
+		      <%= items.price %>$
+		      </br>
+		      <%= button_to "Delete Image", { action: "items", id: items.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+     	    <%end%>
+     	      <h3> Le prix total des items: <%= @price %>$</h3>
+	      <%end%>
 	    <%end%>
-	    <h3> Le prix total des items: <%= @price %>$</h3>
+
     </body>
 </html>

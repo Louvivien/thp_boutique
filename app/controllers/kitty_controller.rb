@@ -27,13 +27,22 @@ class KittyController < ApplicationController
 
   def panier
 	@price = 0
-	current_user.panier.items.each do |items|
-      prix = items.price.to_f
-	  @price = @price + prix
+    if (current_user == nil)
+      flash[:notice] = "Connectez-vous pour voir votre panier"
+    else
+	  if (current_user.panier = nil)
+	    flash[:notice] = "votre panier est vide"
+	  else current_user.panier.items.each do |items|
+          prix = items.price.to_f
+	      @price = @price + prix
+	      puts @price
+	    end
+	  end
 	end
   end
   
   def items
 	current_user.panier.items.delete(params[:id].to_i)
+	redirect_to '/panier'
   end
 end
