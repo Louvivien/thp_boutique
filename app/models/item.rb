@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-#panier
+
 
    validates :title,
    presence: true,
