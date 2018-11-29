@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Titre</title>
-    </head>
+
 
     <body>
+
+<%=render "shared/navbar" %>
+
+
+
+
+
+
+
 	    <h1>Voici votre panier</h1>
 	    </br>
 	    <% if (current_user == nil)%>
@@ -29,5 +33,7 @@
 	      <%end%>
 	    <%end%>
 
+
+<%=render "shared/footer" %>
     </body>
 </html>
