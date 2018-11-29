@@ -99,8 +99,8 @@ class KittyController < ApplicationController
  
     current_user.orders.last.items.each do |items|
       items.price.sub!(",", ".")
-      prix = items.price.to_f
-      @price_total = @price_total + prix
+      price_of_product = items.price.to_f
+      @price_total = @price_total + price_of_product
 	end
 
     if current_user && current_user.panier == nil
