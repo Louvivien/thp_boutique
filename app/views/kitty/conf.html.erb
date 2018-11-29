@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Panier</title>
+    </head>
+
+
+    <body>
+	    <h2> Voici un récapitulatif de votre commande</h2>
+
+	    <% current_user.orders.last.items.each do |items| %>
+		    <img src="<%= items.image_url %>">
+		    </br>
+		    <h3><%= items.title %></h3>
+		    </br>
+		    <h3><%= items.price %>$</h3>
+		    </br>
+	    <% end %>
+	    <h3> Le montant total est de <%= @price_total %>$</h3>
+
+	    <%= button_to "Go back to panier", { action: "backpanier" }, form_class: "new-thing" %>
+
+	    <button type="button">Confirm order here !</button>
+
+    </body>
+</html>
+

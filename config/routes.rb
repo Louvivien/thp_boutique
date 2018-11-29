@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'kitty#contact'
   get '/index', to: 'kitty#new'
   get '/panier', to:'kitty#panier'
+  get '/conf', to: 'kitty#conf'
+  post '/conf', to: 'kitty#backpanier'
   post '/panier', to: 'kitty#order'
   delete '/panier', to: 'kitty#items'
 
