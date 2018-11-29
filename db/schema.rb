@@ -21,10 +21,8 @@ ActiveRecord::Schema.define(version: 2018_11_28_235344) do
     t.string "price"
     t.string "image_url"
     t.bigint "panier_id"
-    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["panier_id"], name: "index_items_on_panier_id"
   end
 
