@@ -40,6 +40,7 @@ class KittyController < ApplicationController
   # end
 	
   def new
+  	  @panier = Panier.find(current_user.id)
 	  @array = Array.new
 	  Item.all.each do |item|
 		  if (duplicate(item) == false)
@@ -93,18 +94,21 @@ class KittyController < ApplicationController
 	  redirect_to '/conf'
   end
 
-   def conf
-	   @price_total = 0
+  def conf
+    @price_total = 0
+ 
+    current_user.orders.last.items.each do |items|
+      items.price.sub!(",", ".")
+      price_of_product = items.price.to_f
+      @price_total = @price_total + price_of_product
+	end
 
-	   current_user.orders.last.items.each do |items|
-                  items.price.sub!(",", ".")
-                  prix = items.price.to_f
-                  @price_total = @price_total + prix
-	   end
+    if current_user && current_user.panier == nil
+	  current_user.panier = Panier.new
+	end
 
-	   if current_user && current_user.panier == nil
-		   current_user.panier = Panier.new
-	   end
+    @amount = @price_total * 100
+    @amount = @amount.to_i
    end
 
    def backpanier
